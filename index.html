@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Geometry Genius</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@3.5.1/dist/full.css" rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -32,6 +31,7 @@
         <div class="flex gap-5">
             <!-- Shapes -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 flex-none">
+
                 <!-- Triangle -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -41,16 +41,18 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Triangle</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = 0.5 X b X h</p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="base" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="height" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="triangle-base" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="base" min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="triangle-height" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="height" min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="triangle-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setTriangleArea()">Calculate</button>
                     </div>
                 </div>
+
                 <!-- Rectangle -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -60,16 +62,18 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Rectangle</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = w X l</p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="width" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="length" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="rectangle-width" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="width" min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="rectangle-length" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="length" min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="rectangle-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setRectangleArea()">Calculate</button>
                     </div>
                 </div>
+
                 <!-- Parallelogram -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -79,16 +83,18 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Parallelogram</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = b X h</p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="base" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="height" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="parallelogram-base" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="base" min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="parallelogram-height" class="bg-gray-200 p-2 rounded w-24" type="number"
+                                placeholder="height" min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="parallelogram-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setParallelogramArea()">Calculate</button>
                     </div>
                 </div>
+
                 <!-- Rhombus -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -98,16 +104,18 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Rhombus</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = 0.5 X d<sub>1</sub> X d<sub>2</sub></p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="d1" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="d2" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="rhombus-d1" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="d1"
+                                min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="rhombus-d2" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="d2"
+                                min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="rhombus-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setRhombusArea()">Calculate</button>
                     </div>
                 </div>
+
                 <!-- Pentagon -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -117,16 +125,18 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Pentagon</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = 0.5 X p X b</p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="p" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="b" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="pentagon-p" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="p"
+                                min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="pentagon-b" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="b"
+                                min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="pentagon-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setPentagonArea()">Calculate</button>
                     </div>
                 </div>
+
                 <!-- Ellipse -->
                 <div class="card w-96 bg-base-100 border">
                     <figure class="px-10 pt-10">
@@ -136,14 +146,15 @@
                         <h2 class="card-title font-bold text-3xl mb-2">Ellipse</h2>
                         <p class="font-medium text-xl mb-1">Area (A) = πab</p>
                         <div class="mb-1">
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="a" min="0"><span
-                                class="ml-2 mr-4">cm</span>
-                            <input class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="b" min="0"><span
-                                class="ml-2">cm</span>
+                            <input id="ellipse-a" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="a"
+                                min="0"><span class="ml-2 mr-4">cm</span>
+                            <input id="ellipse-b" class="bg-gray-200 p-2 rounded w-24" type="number" placeholder="b"
+                                min="0"><span class="ml-2">cm</span>
                         </div>
-                        <p class="font-medium text-xl">Area: <span>0</span> cm<sup>2</sup></p>
+                        <p class="font-medium text-xl">Area: <span id="ellipse-area">0</span> cm<sup>2</sup></p>
                         <button
-                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl">Calculate</button>
+                            class="btn btn-primary text-white bg-blue-500 hover:bg-blue-700 w-full mt-8 normal-case text-xl"
+                            onclick="setEllipseArea()">Calculate</button>
                     </div>
                 </div>
 
